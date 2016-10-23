@@ -15,7 +15,7 @@
 		A5CA68951DB3E1EA0085DCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5CA68941DB3E1EA0085DCF9 /* Assets.xcassets */; };
 		A5CA68981DB3E1EA0085DCF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CA68961DB3E1EA0085DCF9 /* LaunchScreen.storyboard */; };
 		BE768EBB1DBCA5A90048852F /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EBA1DBCA5A90048852F /* RestaurantCell.swift */; };
-		BE768EBD1DBCA5C70048852F /* CategorySwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EBC1DBCA5C70048852F /* CategorySwitchCell.swift */; };
+		BE768EBD1DBCA5C70048852F /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EBC1DBCA5C70048852F /* SwitchCell.swift */; };
 		BE768EBF1DBCA5F80048852F /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EBE1DBCA5F80048852F /* FilterViewController.swift */; };
 		F91065DC1B85B789A2434556 /* Pods_Yelp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2893DC5CAF45E9E472DFFCC /* Pods_Yelp.framework */; };
 /* End PBXBuildFile section */
@@ -34,7 +34,7 @@
 		A5CA68971DB3E1EA0085DCF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5CA68991DB3E1EA0085DCF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE768EBA1DBCA5A90048852F /* RestaurantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
-		BE768EBC1DBCA5C70048852F /* CategorySwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySwitchCell.swift; sourceTree = "<group>"; };
+		BE768EBC1DBCA5C70048852F /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		BE768EBE1DBCA5F80048852F /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				BE768EBA1DBCA5A90048852F /* RestaurantCell.swift */,
-				BE768EBC1DBCA5C70048852F /* CategorySwitchCell.swift */,
+				BE768EBC1DBCA5C70048852F /* SwitchCell.swift */,
 			);
 			name = Wiget;
 			sourceTree = "<group>";
@@ -264,7 +264,7 @@
 				A581AE341DB53945006544B2 /* YelpClient.swift in Sources */,
 				A581AE321DB53860006544B2 /* Business.swift in Sources */,
 				A5CA688E1DB3E1EA0085DCF9 /* AppDelegate.swift in Sources */,
-				BE768EBD1DBCA5C70048852F /* CategorySwitchCell.swift in Sources */,
+				BE768EBD1DBCA5C70048852F /* SwitchCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,10 +44,16 @@ class BusinessesViewController: UIViewController {
         }
         */
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navController = segue.destination as! UINavigationController
+        let filterVC = navController.topViewController as! FilterViewController
+        filterVC.delegate = self
+    }
 
 }
 
-extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource{
+extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if businesses != nil {
@@ -58,9 +64,21 @@ extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource{
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = restaurantTableView.dequeueReusableCell(withIdentifier: "restaurantCell") as! RestaurantCell
+        let cell = restaurantTableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as! RestaurantCell
         cell.business = businesses[indexPath.row]
         return cell
         
+    }
+}
+
+extension BusinessesViewController: FilterViewControllerDelegate {
+    func filterViewController(filterViewController: FilterViewController, categories: [String]) {
+        Business.search(with: "Thai", sort: nil, categories: categories, deals: nil) { (businesses: [Business]?, error: Error?) in
+            if let businesses = businesses {
+                self.businesses = businesses
+                self.restaurantTableView.reloadData()
+                
+            }
+        }
     }
 }
