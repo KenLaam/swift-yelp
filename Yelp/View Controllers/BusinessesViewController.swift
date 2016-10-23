@@ -81,11 +81,9 @@ class BusinessesViewController: UIViewController {
             if let businesses = businesses {
                 self.businesses = businesses
                 self.restaurantTableView.reloadData()
-                
             }
         }
     }
-    
 }
 
 extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
@@ -113,6 +111,7 @@ extension BusinessesViewController: FilterViewControllerDelegate {
         doSearch()
     }
 }
+
 extension BusinessesViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(true, animated: true)
