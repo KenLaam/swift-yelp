@@ -19,6 +19,7 @@ class BusinessesViewController: UIViewController {
     var categories = [String]()
     var offerDeal: Bool!
     var sortMode: Int!
+    var distance: Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +77,7 @@ class BusinessesViewController: UIViewController {
     
     func doSearch(){
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        Business.search(with: keyword, sort: nil, categories: categories, deals: offerDeal) { (businesses: [Business]?, error: Error?) in
+        Business.search(with: keyword, sort: nil, categories: categories, deals: offerDeal, distance: distance) { (businesses: [Business]?, error: Error?) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let businesses = businesses {
                 self.businesses = businesses
@@ -105,9 +106,10 @@ extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension BusinessesViewController: FilterViewControllerDelegate {
-    func filterViewController(filterViewController: FilterViewController, categories: [String], deal: Bool) {
+    func filterViewController(filterViewController: FilterViewController, categories: [String], deal: Bool, distance: Double) {
         self.categories = categories
         self.offerDeal = deal
+        self.distance = distance
         doSearch()
     }
 }

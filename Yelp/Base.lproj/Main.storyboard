@@ -212,20 +212,43 @@
                                     <action selector="showAllCategories:" destination="H8P-NU-X0z" eventType="touchDown" id="OTa-Gs-wkx"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="Cc2-rc-Ckk">
+                                <connections>
+                                    <action selector="distanceChanged:" destination="H8P-NU-X0z" eventType="valueChanged" id="nLr-f4-xWF"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NW2-CA-f7R">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlX-Eo-xzR">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Cc2-rc-Ckk" firstAttribute="top" secondItem="wlX-Eo-xzR" secondAttribute="bottom" constant="15" id="24m-sV-dab"/>
+                            <constraint firstItem="wlX-Eo-xzR" firstAttribute="leading" secondItem="lle-Hz-FBH" secondAttribute="leading" constant="12" id="692-Sr-K23"/>
                             <constraint firstItem="uNQ-jx-L73" firstAttribute="top" secondItem="c9i-PJ-1NM" secondAttribute="bottom" id="8Yu-RQ-XwQ"/>
-                            <constraint firstItem="Qvi-Ch-ixI" firstAttribute="top" secondItem="zps-Uc-riN" secondAttribute="bottom" constant="8" id="9d5-NV-ax0"/>
                             <constraint firstItem="PXn-fY-AQa" firstAttribute="top" secondItem="Qvi-Ch-ixI" secondAttribute="bottom" constant="10" id="Ck2-F8-9cf"/>
+                            <constraint firstItem="NW2-CA-f7R" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wlX-Eo-xzR" secondAttribute="trailing" constant="118" id="Kq1-Qb-IAf"/>
                             <constraint firstItem="c9i-PJ-1NM" firstAttribute="leading" secondItem="lle-Hz-FBH" secondAttribute="leading" id="MIm-ZY-QCr"/>
                             <constraint firstItem="Qvi-Ch-ixI" firstAttribute="leading" secondItem="lle-Hz-FBH" secondAttribute="leading" constant="12" id="NIv-vH-WNe"/>
                             <constraint firstAttribute="trailing" secondItem="zps-Uc-riN" secondAttribute="trailing" id="P9g-Wc-4oj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NW2-CA-f7R" secondAttribute="trailing" constant="8" id="SiP-ar-tdR"/>
                             <constraint firstItem="zps-Uc-riN" firstAttribute="top" secondItem="dl8-7C-7vJ" secondAttribute="bottom" id="WhI-hs-oLa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Cc2-rc-Ckk" secondAttribute="trailing" id="X9N-D2-Y3M"/>
                             <constraint firstItem="c9i-PJ-1NM" firstAttribute="top" secondItem="PXn-fY-AQa" secondAttribute="bottom" id="YQQ-Em-sVX"/>
                             <constraint firstItem="zps-Uc-riN" firstAttribute="leading" secondItem="lle-Hz-FBH" secondAttribute="leading" id="ZfZ-gi-NgI"/>
+                            <constraint firstItem="wlX-Eo-xzR" firstAttribute="top" secondItem="zps-Uc-riN" secondAttribute="bottom" constant="8" id="aKg-sZ-sAK"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Cc2-rc-Ckk" secondAttribute="leading" id="cpO-cw-nxv"/>
                             <constraint firstItem="PXn-fY-AQa" firstAttribute="leading" secondItem="lle-Hz-FBH" secondAttribute="leading" id="dvG-UP-w6P"/>
                             <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="Qvi-Ch-ixI" secondAttribute="trailing" constant="217" id="lQz-0d-B30"/>
+                            <constraint firstItem="Qvi-Ch-ixI" firstAttribute="top" secondItem="Cc2-rc-Ckk" secondAttribute="bottom" constant="8" id="mkY-6L-dvr"/>
+                            <constraint firstItem="NW2-CA-f7R" firstAttribute="baseline" secondItem="wlX-Eo-xzR" secondAttribute="baseline" id="tP6-Ce-qkI"/>
                             <constraint firstAttribute="trailing" secondItem="c9i-PJ-1NM" secondAttribute="trailing" id="w5M-gf-tqL"/>
                             <constraint firstAttribute="trailing" secondItem="PXn-fY-AQa" secondAttribute="trailing" id="zIN-vJ-mcM"/>
                         </constraints>
@@ -244,6 +267,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dealSwitch" destination="OS9-E1-R0J" id="qFH-uk-Ky8"/>
+                        <outlet property="distanceLabel" destination="NW2-CA-f7R" id="FHh-sH-bbL"/>
                         <outlet property="filterTable" destination="PXn-fY-AQa" id="5n6-9p-pbT"/>
                         <outlet property="showCategoriesButton" destination="c9i-PJ-1NM" id="R1y-L6-qcS"/>
                     </connections>
