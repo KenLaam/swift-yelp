@@ -10,19 +10,23 @@ import UIKit
 
 class BusinessesViewController: UIViewController {
 
+    @IBOutlet weak var restaurantTableView: UITableView!
+
+    
     var businesses: [Business]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        restaurantTableView.delegate = self
+        restaurantTableView.dataSource = self
+        restaurantTableView.rowHeight = UITableViewAutomaticDimension
+        restaurantTableView.estimatedRowHeight = 100
 
         Business.search(with: "Thai") { (businesses: [Business]?, error: Error?) in
             if let businesses = businesses {
                 self.businesses = businesses
+                self.restaurantTableView.reloadData()
 
-                for business in businesses {
-                    print(business.name!)
-                    print(business.address!)
-                }
             }
         }
 
@@ -41,4 +45,22 @@ class BusinessesViewController: UIViewController {
         */
     }
 
+}
+
+extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if businesses != nil {
+            return businesses.count
+        } else {
+            return 0
+        }
+    }
+        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = restaurantTableView.dequeueReusableCell(withIdentifier: "restaurantCell") as! RestaurantCell
+        cell.business = businesses[indexPath.row]
+        return cell
+        
+    }
 }
