@@ -254,7 +254,7 @@ class FilterViewController: UIViewController {
         var categoriesSelected = [String]()
         for (index, value) in categoriesState {
             if categoriesState[index]! {
-                categoriesSelected.append(categories[index]["code"]!)
+                categoriesSelected.append(displayCategories[index]["code"]!)
             }
         }
         delegate?.filterViewController(filterViewController: self, categories: categoriesSelected, deal: dealSwitch.isOn, distance: distance)
