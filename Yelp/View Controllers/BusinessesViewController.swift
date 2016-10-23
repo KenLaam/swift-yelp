@@ -12,18 +12,33 @@ import MBProgressHUD
 class BusinessesViewController: UIViewController {
     
     @IBOutlet weak var restaurantTableView: UITableView!
-    
+    var searchBar: UISearchBar!
     
     var businesses: [Business]!
+    var keyword: String!
+    var categories = [String]()
+    var offerDeal: Bool!
+    var sortMode: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //init search bar
+        searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        navigationItem.titleView = searchBar
+        
+        //init restaurant table view
         restaurantTableView.delegate = self
         restaurantTableView.dataSource = self
         restaurantTableView.rowHeight = UITableViewAutomaticDimension
         restaurantTableView.estimatedRowHeight = 100
+        
+        initData()
+        // fetch data
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        Business.search(with: "Thai") { (businesses: [Business]?, error: Error?) in
+        Business.search(with: keyword) { (businesses: [Business]?, error: Error?) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let businesses = businesses {
                 self.businesses = businesses
@@ -47,10 +62,28 @@ class BusinessesViewController: UIViewController {
          */
     }
     
+    func initData() {
+        keyword = "Thai"
+        offerDeal = nil
+        sortMode = nil
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navController = segue.destination as! UINavigationController
         let filterVC = navController.topViewController as! FilterViewController
         filterVC.delegate = self
+    }
+    
+    func doSearch(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        Business.search(with: keyword, sort: nil, categories: categories, deals: offerDeal) { (businesses: [Business]?, error: Error?) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let businesses = businesses {
+                self.businesses = businesses
+                self.restaurantTableView.reloadData()
+                
+            }
+        }
     }
     
 }
@@ -75,14 +108,31 @@ extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension BusinessesViewController: FilterViewControllerDelegate {
     func filterViewController(filterViewController: FilterViewController, categories: [String], deal: Bool) {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        Business.search(with: "Thai", sort: nil, categories: categories, deals: deal) { (businesses: [Business]?, error: Error?) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            if let businesses = businesses {
-                self.businesses = businesses
-                self.restaurantTableView.reloadData()
-                
-            }
-        }
+        self.categories = categories
+        self.offerDeal = deal
+        doSearch()
     }
+}
+extension BusinessesViewController: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(true, animated: true)
+        return true
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(false, animated: true)
+        return true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        keyword = searchBar.text
+        doSearch()
+    }
+
 }

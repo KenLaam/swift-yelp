@@ -20,10 +20,16 @@ class RestaurantCell: UITableViewCell {
     
     var business: Business! {
         didSet{
-            thumbImageView.setImageWith(business.imageURL!)
+            if business.imageURL != nil{
+                thumbImageView.setImageWith(business.imageURL!)
+            }
+            
+            if business.ratingImageURL != nil{
+                ratingImageView.setImageWith(business.ratingImageURL!)
+            }
             nameLabel.text = business.name
             distanceLabel.text = business.distance
-            ratingImageView.setImageWith(business.ratingImageURL!)
+            
             reviewCountLabel.text = String(describing: business.reviewCount!)
             addressLabel.text = business.address
             categoriesLabel.text = business.categories
