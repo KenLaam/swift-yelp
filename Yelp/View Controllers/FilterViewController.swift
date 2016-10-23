@@ -9,12 +9,14 @@
 import UIKit
 
 @objc protocol FilterViewControllerDelegate {
-    @objc func filterViewController(filterViewController: FilterViewController, categories: [String])
+    @objc func filterViewController(filterViewController: FilterViewController, categories: [String], deal: Bool)
 }
 
 class FilterViewController: UIViewController {
     
     @IBOutlet weak var filterTable: UITableView!
+    @IBOutlet weak var dealSwitch: UISwitch!
+    
     
     weak var delegate: FilterViewControllerDelegate?
     let categories = [["name" : "Afghan", "code": "afghani"],
@@ -227,7 +229,9 @@ class FilterViewController: UIViewController {
         }
 
         if categoriesSelected.count > 0 {
-            delegate?.filterViewController(filterViewController: self, categories: categoriesSelected)
+            delegate?.filterViewController(filterViewController: self, categories: categoriesSelected, deal: dealSwitch.isOn)
+        } else {
+            delegate?.filterViewController(filterViewController: self, categories: [], deal: dealSwitch.isOn)
         }
         
         dismiss(animated: true, completion: nil)

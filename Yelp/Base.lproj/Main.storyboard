@@ -27,7 +27,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="114"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="7yw-xm-8Ld" id="VAh-bH-HYM">
-                                            <frame key="frameInset" width="320" height="113.5"/>
+                                            <frame key="frameInset" width="320" height="113"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wi2-2m-mId">
@@ -153,7 +153,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yQz-E7-ro7" id="oKR-Qp-wFg">
-                                            <frame key="frameInset" width="320" height="43.5"/>
+                                            <frame key="frameInset" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wNS-li-QRm">
@@ -183,13 +183,42 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zps-Uc-riN">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offering a Deal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEt-BZ-wkS">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OS9-E1-R0J"/>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="OS9-E1-R0J" secondAttribute="trailing" constant="8" id="A5h-7s-M7P"/>
+                                    <constraint firstItem="GEt-BZ-wkS" firstAttribute="leading" secondItem="zps-Uc-riN" secondAttribute="leading" constant="8" id="HhZ-XI-G15"/>
+                                    <constraint firstItem="GEt-BZ-wkS" firstAttribute="top" secondItem="zps-Uc-riN" secondAttribute="top" constant="8" id="LgQ-o7-3KG"/>
+                                    <constraint firstItem="OS9-E1-R0J" firstAttribute="centerY" secondItem="GEt-BZ-wkS" secondAttribute="centerY" id="MGL-gY-FFD"/>
+                                    <constraint firstAttribute="bottom" secondItem="GEt-BZ-wkS" secondAttribute="bottom" constant="8" id="VXO-lE-bDA"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvi-Ch-ixI">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PXn-fY-AQa" firstAttribute="top" secondItem="dl8-7C-7vJ" secondAttribute="bottom" id="0iR-F6-150"/>
-                            <constraint firstItem="uNQ-jx-L73" firstAttribute="top" secondItem="PXn-fY-AQa" secondAttribute="bottom" id="DyJ-ms-vya"/>
-                            <constraint firstAttribute="trailing" secondItem="PXn-fY-AQa" secondAttribute="trailing" id="JJF-u6-bCA"/>
-                            <constraint firstItem="PXn-fY-AQa" firstAttribute="leading" secondItem="lle-Hz-FBH" secondAttribute="leading" id="t6Y-iF-GEP"/>
+                            <constraint firstItem="uNQ-jx-L73" firstAttribute="top" secondItem="PXn-fY-AQa" secondAttribute="bottom" id="3HO-jR-yKo"/>
+                            <constraint firstItem="Qvi-Ch-ixI" firstAttribute="top" secondItem="zps-Uc-riN" secondAttribute="bottom" constant="8" id="9d5-NV-ax0"/>
+                            <constraint firstItem="PXn-fY-AQa" firstAttribute="top" secondItem="Qvi-Ch-ixI" secondAttribute="bottom" constant="10" id="Ck2-F8-9cf"/>
+                            <constraint firstItem="Qvi-Ch-ixI" firstAttribute="leading" secondItem="lle-Hz-FBH" secondAttribute="leading" constant="12" id="NIv-vH-WNe"/>
+                            <constraint firstAttribute="trailing" secondItem="zps-Uc-riN" secondAttribute="trailing" id="P9g-Wc-4oj"/>
+                            <constraint firstItem="zps-Uc-riN" firstAttribute="top" secondItem="dl8-7C-7vJ" secondAttribute="bottom" id="WhI-hs-oLa"/>
+                            <constraint firstItem="zps-Uc-riN" firstAttribute="leading" secondItem="lle-Hz-FBH" secondAttribute="leading" id="ZfZ-gi-NgI"/>
+                            <constraint firstItem="PXn-fY-AQa" firstAttribute="leading" secondItem="lle-Hz-FBH" secondAttribute="leading" id="dvG-UP-w6P"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qvi-Ch-ixI" secondAttribute="trailing" constant="217" id="lQz-0d-B30"/>
+                            <constraint firstAttribute="trailing" secondItem="PXn-fY-AQa" secondAttribute="trailing" id="zIN-vJ-mcM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wR5-Zf-KCb">
@@ -205,6 +234,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dealSwitch" destination="OS9-E1-R0J" id="qFH-uk-Ky8"/>
                         <outlet property="filterTable" destination="PXn-fY-AQa" id="5n6-9p-pbT"/>
                     </connections>
                 </viewController>
