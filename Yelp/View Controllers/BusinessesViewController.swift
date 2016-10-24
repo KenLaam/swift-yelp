@@ -66,7 +66,8 @@ class BusinessesViewController: UIViewController {
     func initData() {
         keyword = "Thai"
         offerDeal = nil
-        sortMode = nil
+        sortMode = 0
+        distance = 0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
