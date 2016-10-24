@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol FilterViewControllerDelegate {
-    @objc func filterViewController(filterViewController: FilterViewController, categories: [String], deal: Bool, distance: Double)
+    @objc func filterViewController(filterViewController: FilterViewController, categories: [String], deal: Bool, distance: Double, sortMode: Int)
 }
 
 class FilterViewController: UIViewController {
@@ -18,33 +18,35 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var dealSwitch: UISwitch!
     @IBOutlet weak var showCategoriesButton: UIButton!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var sortModePicker: UIPickerView!
     
     
     weak var delegate: FilterViewControllerDelegate?
+    let sortMode = ["Best Matched", "Distance", "Highest Rated"]
     var distance: Double! = 0
     var displayCategories = [["name" : "Afghan", "code": "afghani"],
-                             ["name" : "African", "code": "african"],
-                             ["name" : "American, New", "code": "newamerican"],
-                             ["name" : "American, Traditional", "code": "tradamerican"],
-                             ["name" : "Arabian", "code": "arabian"],
-                             ["name" : "Argentine", "code": "argentine"],
-                             ["name" : "Armenian", "code": "armenian"],
-                             ["name" : "Asian Fusion", "code": "asianfusion"],
-                             ["name" : "Asturian", "code": "asturian"],
-                             ["name" : "Australian", "code": "australian"],
-                             ["name" : "Austrian", "code": "austrian"],
-                             ["name" : "Baguettes", "code": "baguettes"],
-                             ["name" : "Bangladeshi", "code": "bangladeshi"],
-                             ["name" : "Barbeque", "code": "bbq"],
-                             ["name" : "Basque", "code": "basque"],
-                             ["name" : "Bavarian", "code": "bavarian"],
-                             ["name" : "Beer Garden", "code": "beergarden"],
-                             ["name" : "Beer Hall", "code": "beerhall"],
-                             ["name" : "Beisl", "code": "beisl"],
-                             ["name" : "Belgian", "code": "belgian"],
-                             ["name" : "Bistros", "code": "bistros"],
-                             ["name" : "Black Sea", "code": "blacksea"],
-                             ["name" : "Brasseries", "code": "brasseries"],
+//                             ["name" : "African", "code": "african"],
+//                             ["name" : "American, New", "code": "newamerican"],
+//                             ["name" : "American, Traditional", "code": "tradamerican"],
+//                             ["name" : "Arabian", "code": "arabian"],
+//                             ["name" : "Argentine", "code": "argentine"],
+//                             ["name" : "Armenian", "code": "armenian"],
+//                             ["name" : "Asian Fusion", "code": "asianfusion"],
+//                             ["name" : "Asturian", "code": "asturian"],
+//                             ["name" : "Australian", "code": "australian"],
+//                             ["name" : "Austrian", "code": "austrian"],
+//                             ["name" : "Baguettes", "code": "baguettes"],
+//                             ["name" : "Bangladeshi", "code": "bangladeshi"],
+//                             ["name" : "Barbeque", "code": "bbq"],
+//                             ["name" : "Basque", "code": "basque"],
+//                             ["name" : "Bavarian", "code": "bavarian"],
+//                             ["name" : "Beer Garden", "code": "beergarden"],
+//                             ["name" : "Beer Hall", "code": "beerhall"],
+//                             ["name" : "Beisl", "code": "beisl"],
+//                             ["name" : "Belgian", "code": "belgian"],
+//                             ["name" : "Bistros", "code": "bistros"],
+//                             ["name" : "Black Sea", "code": "blacksea"],
+//                             ["name" : "Brasseries", "code": "brasseries"],
                              ["name" : "Brazilian", "code": "brazilian"],
                              ["name" : "Breakfast & Brunch", "code": "breakfast_brunch"],
                              ["name" : "British", "code": "british"],
@@ -227,6 +229,9 @@ class FilterViewController: UIViewController {
         // Do any additional setup after loading the view.
         filterTable.delegate = self
         filterTable.dataSource = self
+        
+        sortModePicker.delegate = self
+        sortModePicker.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -257,7 +262,7 @@ class FilterViewController: UIViewController {
                 categoriesSelected.append(displayCategories[index]["code"]!)
             }
         }
-        delegate?.filterViewController(filterViewController: self, categories: categoriesSelected, deal: dealSwitch.isOn, distance: distance * 1609)
+        delegate?.filterViewController(filterViewController: self, categories: categoriesSelected, deal: dealSwitch.isOn, distance: distance * 1609, sortMode: sortModePicker.selectedRow(inComponent: 0))
         dismiss(animated: true, completion: nil)
     }
     
@@ -297,6 +302,24 @@ extension FilterViewController: SwitchCellDelegate {
     func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
         let index = filterTable.indexPath(for: switchCell)?.row
         categoriesState[index!] = value
+    }
+}
+
+extension FilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return sortMode.count
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return sortMode[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
     }
 }
 
