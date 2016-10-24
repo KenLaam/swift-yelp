@@ -257,7 +257,7 @@ class FilterViewController: UIViewController {
                 categoriesSelected.append(displayCategories[index]["code"]!)
             }
         }
-        delegate?.filterViewController(filterViewController: self, categories: categoriesSelected, deal: dealSwitch.isOn, distance: distance)
+        delegate?.filterViewController(filterViewController: self, categories: categoriesSelected, deal: dealSwitch.isOn, distance: distance * 1609)
         dismiss(animated: true, completion: nil)
     }
     
